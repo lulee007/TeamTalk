@@ -4,22 +4,22 @@
 # date: 08/30/2014
 
 # setup mysql
-
+# modified by xhlu change to another source， original url return 404
 MARIADB_SHARED=MariaDB-10.0.17-centos6-x86_64-shared
-MARIADB_SHARED_DOWNLOAD_PATH=http://sfo1.mirrors.digitalocean.com/mariadb/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_SHARED.rpm
+MARIADB_SHARED_DOWNLOAD_PATH=http://archive.mariadb.org/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_SHARED.rpm
 
 MARIADB_CLIENT=MariaDB-10.0.17-centos6-x86_64-client
-MARIADB_CLIENT_DOWNLOAD_PATH=http://sfo1.mirrors.digitalocean.com/mariadb/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_CLIENT.rpm
+MARIADB_CLIENT_DOWNLOAD_PATH=http://archive.mariadb.org/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_CLIENT.rpm
 
 
 MARIADB_SERVER=MariaDB-10.0.17-centos6-x86_64-server
-MARIADB_SERVER_DOWNLOAD_PATH=http://sfo1.mirrors.digitalocean.com/mariadb/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_SERVER.rpm
+MARIADB_SERVER_DOWNLOAD_PATH=http://archive.mariadb.org/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_SERVER.rpm
 
 MARIADB_COMMON=MariaDB-10.0.17-centos6-x86_64-common
-MARIADB_COMMON_DOWNLOAD_PATH=http://sfo1.mirrors.digitalocean.com/mariadb/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_COMMON.rpm
+MARIADB_COMMON_DOWNLOAD_PATH=http://archive.mariadb.org/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_COMMON.rpm
 
 MARIADB_COMPAT=MariaDB-10.0.17-centos6-x86_64-compat
-MARIADB_COMPAT_DOWNLOAD_PATH=http://sfo1.mirrors.digitalocean.com/mariadb/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_COMPAT.rpm
+MARIADB_COMPAT_DOWNLOAD_PATH=http://archive.mariadb.org/mariadb-10.0.17/yum/centos6-amd64/rpms/$MARIADB_COMPAT.rpm
 
 IM_SQL=ttopen.sql
 MYSQL_CONF=my.cnf
@@ -46,7 +46,8 @@ check_os() {
 	#echo "$OS_VERSION, $OS_BIT bit..." 
 	if [[ $OS_VERSION =~ "CentOS" ]]; then
 		if [ $OS_BIT == 64 ]; then
-			if [[ $OS_VERSION =~ "7" ]]; then
+			# modified by lulee007 $OS_VERSION =~ "7" does not match 5.7 6.7 etc, change to $OS_VERSION =~ "7."
+			if [[ $OS_VERSION =~ "7." ]]; then
 				CENTOS_VERSION=7
 			else 
 				CENTOS_VERSION=6
